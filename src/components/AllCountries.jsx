@@ -27,8 +27,8 @@ export const AllCountries = () => {
 
 
   //country name of server need to be capital for searching the name
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  function capitalizeFirstLetter(nameOfCountry) {
+    return nameOfCountry.charAt(0).toUpperCase() + nameOfCountry.slice(1);
   }
   const handleCountryName = (e) => {
     setCountryName(capitalizeFirstLetter(e.target.value));
