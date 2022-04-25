@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 import { useGlobalContext } from '../context/context'
 import { Country } from './Country'
-import { Loading } from "./../components/Loading";
+import { Loading } from './Loading';
+
 import { SearchItem } from './SearchItem';
 
 export const AllCountries = () => {
 
-  const { countries, loading, darkModeState } = useGlobalContext()
 
 
-
+  const { countries, darkModeState, regionName, handleRegionName, loading } = useGlobalContext()
   const [countryName, setCountryName] = useState("");
-  const [regionName, setRegionName] = useState("");
 
-  const handleRegionName = (e) => {
-    setRegionName(e.target.value);
-  };
+  if (loading) {
+    return <Loading />
+  }
+
 
   const newRegion = regionName
     ? countries.filter((e) => e.region === regionName)
@@ -23,10 +23,10 @@ export const AllCountries = () => {
 
   const newName = countryName
     ? newRegion.filter((element) => element.name.common.includes(`${countryName}`))
-    : countries
+    : newRegion
 
 
-  //country name of server need to be capital for searching the name
+  //country name in server need to be capital for searching the name
   function capitalizeFirstLetter(nameOfCountry) {
     return nameOfCountry.charAt(0).toUpperCase() + nameOfCountry.slice(1);
   }
@@ -36,16 +36,20 @@ export const AllCountries = () => {
 
   return (
     <div className={`allCountries ${darkModeState ? "darkMode-body" : ""}`}>
-      {loading && <Loading />}
+
+
       <SearchItem
+        regionName={regionName}
         handleRegionName={handleRegionName}
         handleCountryName={handleCountryName}
       />
-      {newName.map((country, index) => {
-        return (
-          < Country key={index} {...country} />
-        )
-      })}
+      <div className="country-collection">
+        {newName.map((country, index) => {
+          return (
+            < Country key={index} {...country} />
+          )
+        })}
+      </div>
     </div>
   )
 }

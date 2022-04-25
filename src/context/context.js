@@ -1,21 +1,60 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AppContext = createContext();
+
 const endPointAllCountry = "https://restcountries.com/v3.1/all";
+
+//LocalStorage for dark and light mode --------------------
+const setLocalStorage = (key, value) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    console.error({ e });
+  }
+};
+const getLocalStorage = (key, initialValue) => {
+  try {
+    const value = localStorage.getItem(key);
+
+    return value ? JSON.parse(value) : initialValue;
+  } catch (e) {
+    return initialValue;
+  }
+};
+//----------------------------------------------------------
 
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [countries, setCountries] = useState([]);
-  const [darkModeState, setDarkModeState] = useState(false);
-  
+  const [regionName, setRegionName] = useState("");
+  const [darkModeState, setDarkModeState] = useState(() =>
+    getLocalStorage("mode", "false")
+  );
+
+  useEffect(() => {
+    setLocalStorage("mode", darkModeState);
+  }, [darkModeState]);
+
+  // change the region name
+  const handleRegionName = (e) => {
+    setRegionName(e.target.value);
+  };
+
+  // change the theme mode
   const darkModeStateChanger = () => {
     setDarkModeState(!darkModeState);
   };
-  
+
+  // fetch data from server
   const fetchCountries = async () => {
     try {
       setLoading(true);
-      const response = await fetch(endPointAllCountry);
+      const response = await fetch(endPointAllCountry, {
+        method: "get",
+        headers: {
+          "content-type": "application/json",
+        },
+      });
       if (response.ok) {
         const data = await response.json();
         setCountries(data);
@@ -26,14 +65,13 @@ const AppProvider = ({ children }) => {
       setLoading(false);
     } catch (error) {
       console.error(error);
-      console.log("khata chap shavad");
+      console.log("something strange happen in fetching all countries data, plz try again");
     }
   };
 
   useEffect(() => {
     fetchCountries();
   }, []);
-
 
   return (
     <AppContext.Provider
@@ -42,13 +80,17 @@ const AppProvider = ({ children }) => {
         loading,
         darkModeStateChanger,
         darkModeState,
-        setCountries
+        setCountries,
+        regionName,
+        handleRegionName,
       }}
     >
       {children}
     </AppContext.Provider>
   );
 };
+
+//custom hook for global State
 
 export const useGlobalContext = () => {
   return useContext(AppContext);

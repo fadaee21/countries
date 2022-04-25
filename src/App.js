@@ -1,13 +1,27 @@
-import { AllCountries } from "./components/AllCountries";
-import { Navbar } from "./components/Navbar";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+// import pages
+import { Home } from './pages/Home';
+import { CountryDetail } from './pages/CountryDetail';
+// import About from './pages/About';
+// import Error from './pages/Error';
+
+
+// import components
+import { Navbar } from './components/Navbar';
 
 function App() {
- 
   return (
-    <div className="App">
+    <Router>
       <Navbar />
-      <AllCountries />
-    </div>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        {/* <Route path='about' element={<About />} /> */}
+        <Route path='country/:id' element={<CountryDetail />} />
+        {/* <Route path='*' element={<Error />} /> */}
+      </Routes>
+    </Router>
   );
 }
 

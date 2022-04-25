@@ -2,8 +2,10 @@ import React from 'react'
 import { useGlobalContext } from '../context/context'
 
 export const Loading = () => {
-  const {darkModeState} = useGlobalContext()
+  const { darkModeState } = useGlobalContext()
   return (
-    <div className={`loading ${darkModeState ? 'darkMode' : ""} ` }  > Loading...</div>
+    <div className={`loading ${darkModeState ? 'darkMode' : ""} `}  >
+      <div className="loader"></div>
+    </div>
   )
 }

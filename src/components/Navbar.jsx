@@ -9,8 +9,11 @@ export const Navbar = () => {
             <button
                 onClick={darkModeStateChanger}
                 className='btn btn-light' >
-                <i className="fa-regular fa-moon fa-lg"></i>
-                Dark Mode
+
+                {darkModeState
+                    ? <p><i className="fa-regular fa-sun"></i>Light Mode </p>
+                    : <p><i className="fa-regular fa-moon fa-lg"></i>Dark Mode </p>
+                }
             </button>
         </div>
     )
