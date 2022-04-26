@@ -4,9 +4,9 @@ import { useGlobalContext } from '../context/context'
 export const Navbar = () => {
     const { darkModeState, darkModeStateChanger } = useGlobalContext()
     return (
-        <div className={`navbar ${darkModeState ? "darkMode" : ""}`}>
+        <header className={`navbar ${darkModeState ? "darkMode" : ""}`}>
             <p >Where in the world?</p>
-            <button
+            <div
                 onClick={darkModeStateChanger}
                 className='btn btn-light' >
 
@@ -14,7 +14,7 @@ export const Navbar = () => {
                     ? <p><i className="fa-regular fa-sun"></i>Light Mode </p>
                     : <p><i className="fa-regular fa-moon fa-lg"></i>Dark Mode </p>
                 }
-            </button>
-        </div>
+            </div>
+        </header>
     )
 }

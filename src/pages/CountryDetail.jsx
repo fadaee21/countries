@@ -15,7 +15,7 @@ export const CountryDetail = () => {
 
     try {
       setLoading(true)
-      const res = await fetch(`https://restcountries.com/v3.1/name/${id}?fullText=true`, {
+      const res = await fetch(`https://restcountries.com/v3.1/alpha/${id}`, {
         method: "get",
         headers: {
           "content-type": "application/json",
@@ -67,6 +67,10 @@ export const CountryDetail = () => {
           currencies,
           languages
         } = item;
+
+        console.log(name)
+
+
         //native name has different key name so i should find last item of object
         const nativeName = name.nativeName;
         const nativeNameArray = Object.values(nativeName)
@@ -80,9 +84,9 @@ export const CountryDetail = () => {
               Back
             </button>
             <div className="detail-content">
-              <img src={flags.png} alt={`the flag of ${name}`} />
+              <img src={flags.png} alt={`the flag of ${name.common}`} />
               <div className="detail-explanation">
-                <h2 className="detail-name">{id}</h2>
+                <h2 className="detail-name">{name.common}</h2>
                 <div className="detail-body">
                   <ul className="detail-part1">
                     <li>

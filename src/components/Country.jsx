@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/context';
-export const Country = ({ flags, name, population, region, capital }) => {
+export const Country = ({ flags, name, population, region, capital,cca3 }) => {
+
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -11,13 +12,13 @@ export const Country = ({ flags, name, population, region, capital }) => {
 
   return (
     <div className={`country ${darkModeState ? "darkMode" : ""}`}>
-      <Link to={`country/${name.common}`} ><img src={flags.png} alt={`flag of ${name.common}`} /></Link>
+      <Link to={`country/${cca3}`} ><img src={flags.png} alt={`flag of ${name.common}`} /></Link>
       <h3>{name.common}</h3>
-      <div className="country-info">
-        <p><span>population:</span> {numberWithCommas(population)}</p>
-        <p><span>region:</span> {region}</p>
-        <p><span>capital:</span> {capital}</p>
-      </div>
+      <ul className="country-info">
+        <li><span>population:</span> {numberWithCommas(population)}</li>
+        <li><span>region:</span> {region}</li>
+        <li><span>capital:</span> {capital}</li>
+      </ul>
     </div>
   )
 }

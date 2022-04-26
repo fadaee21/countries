@@ -16,8 +16,8 @@ export const SearchItem = ({ handleRegionName, handleCountryName }) => {
                     onChange={handleCountryName}
                 />
             </div>
-            <select className='option-region' onChange={handleRegionName}  >
-                <option defaultValue="" hidden placeholder='Filter by region' >Filter by region</option>
+            <select name='region' className='option-region' onChange={handleRegionName}  >
+                <option hidden  >Filter by region</option>
                 <option value="Americas">America</option>
                 <option value="Africa">Africa</option>
                 <option value="Oceania">Oceania</option>

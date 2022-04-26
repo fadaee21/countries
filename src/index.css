@@ -84,7 +84,6 @@ Buttons
   display: inline-block;
 }
 
-
 .btn-light {
   background: var(--White);
   border-color: transparent;
@@ -108,7 +107,12 @@ darkMode
 .darkMode p {
   color: var(--White);
 }
-.darkMode h3 {
+.darkMode ul {
+  color: var(--White);
+}
+.darkMode h3,
+.darkMode h4,
+.darkMode h2 {
   color: var(--White);
 }
 .darkMode img {
@@ -119,10 +123,10 @@ darkMode
   background: transparent;
   border-color: transparent;
 }
-
+.darkMode .btn:hover,
 .darkMode .btn:hover * {
   background: transparent;
-  color: var(--DarkGray) ;
+  color: var(--DarkGray);
 }
 .darkMode-body.detail {
   color: var(--VeryLightGray);
@@ -214,10 +218,7 @@ allCountries
   width: 50%;
   padding-left: 0.5rem;
   cursor: pointer;
-
-  
 }
-
 
 .fa-magnifying-glass {
   position: absolute;
@@ -243,18 +244,20 @@ country
   transform: scale(1.05);
   width: 17rem;
   height: 21rem;
-  
 }
 
 .country img {
   height: 50%;
   border-radius: var(--mainBorderRadius) var(--mainBorderRadius) 0 0;
 }
-.country-info {
+ul.country-info {
   text-indent: 1rem;
   margin-bottom: 3rem;
 }
-.country-info > p > span {
+ul.country-info > li {
+  padding-top: 0.75rem;
+}
+ul.country-info > li > span {
   text-transform: capitalize;
   font-weight: 600;
 }
@@ -353,7 +356,7 @@ media bigger than 576px
   .navbar > p {
     font-size: 1.2rem;
   }
-  .navbar > button > p {
+  .navbar > .btn > p {
     font-size: 1rem;
   }
   .form-control-countries {
@@ -385,9 +388,9 @@ media bigger than 576px
   padding: 0.7rem 0;
   border-radius: 0.25rem;
   cursor: pointer;
-  transition: var(--mainTransition)
+  transition: var(--mainTransition);
 }
-.btn-back:hover{
+.btn-back:hover {
   transform: scale(1.05);
 }
 .btn-back-light {
@@ -513,9 +516,54 @@ media bigger than 576px
   .btn-back {
     margin: 7rem 0 2rem 0;
   }
-  
+
   .border-country {
     display: inline-block;
     width: 65%;
   }
+}
+
+/* 
+  ====== 
+  404
+  ======
+  */
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  
+}
+
+.img404 {
+  background: url("https://res.cloudinary.com/dt63d2mtc/image/upload/c_crop,h_981,w_485,x_0/v1650980663/country/404_zkxm1t.png")
+    no-repeat center center/cover;
+  min-width: 10rem;
+  height: 10rem;
+  margin-right: 2rem
+
+}
+
+.error.darkMode {
+  background-color: var(--VeryDarkBlueBackground) !important ;
+}
+.error h2 {
+  font-size: 3rem;
+} 
+
+
+.btn-error {
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  transition: var(--mainTransition);
+}
+.btn-error:active{
+  transform: scale(0.98);
 }

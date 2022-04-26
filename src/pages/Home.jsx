@@ -3,8 +3,8 @@ import { AllCountries } from '../components/AllCountries'
 
 export const Home = () => {
   return (
-    <div>
+    <main>
       <AllCountries />
-    </div>
+    </main>
   )
 }
