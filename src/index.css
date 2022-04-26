@@ -13,7 +13,7 @@ Variables
   --homePageItem: 14px;
   --DetailPage: 16px;
 
-  --mainTransition: all 0.3s linear;
+  --mainTransition: all 0.2s ease;
   --lightShadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
   --darkShadow: 1px 4px 2px 0px rgba(78, 74, 74, 0.1);
   --mainBorderRadius: 0.5rem;
@@ -84,6 +84,7 @@ Buttons
   display: inline-block;
 }
 
+
 .btn-light {
   background: var(--White);
   border-color: transparent;
@@ -119,9 +120,9 @@ darkMode
   border-color: transparent;
 }
 
-.darkMode .btn:hover {
-  background: var(--primaryLightColor);
-  color: var(--DarkGray);
+.darkMode .btn:hover * {
+  background: transparent;
+  color: var(--DarkGray) ;
 }
 .darkMode-body.detail {
   color: var(--VeryLightGray);
@@ -213,7 +214,10 @@ allCountries
   width: 50%;
   padding-left: 0.5rem;
   cursor: pointer;
+
+  
 }
+
 
 .fa-magnifying-glass {
   position: absolute;
@@ -232,6 +236,14 @@ country
   box-shadow: var(--lightShadow);
   width: 17rem;
   height: 21rem;
+  transition: var(--mainTransition);
+}
+
+.country:hover {
+  transform: scale(1.05);
+  width: 17rem;
+  height: 21rem;
+  
 }
 
 .country img {
@@ -338,6 +350,12 @@ media bigger than 576px
   .navbar {
     padding: 1rem 3rem;
   }
+  .navbar > p {
+    font-size: 1.2rem;
+  }
+  .navbar > button > p {
+    font-size: 1rem;
+  }
   .form-control-countries {
     align-items: flex-end;
   }
@@ -367,6 +385,10 @@ media bigger than 576px
   padding: 0.7rem 0;
   border-radius: 0.25rem;
   cursor: pointer;
+  transition: var(--mainTransition)
+}
+.btn-back:hover{
+  transform: scale(1.05);
 }
 .btn-back-light {
   background-color: var(--White);
@@ -480,7 +502,6 @@ media bigger than 576px
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-   
   }
 
   .border-countries > p {
@@ -492,6 +513,7 @@ media bigger than 576px
   .btn-back {
     margin: 7rem 0 2rem 0;
   }
+  
   .border-country {
     display: inline-block;
     width: 65%;
