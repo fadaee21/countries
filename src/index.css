@@ -494,5 +494,6 @@ media bigger than 576px
   }
   .border-country {
     display: inline-block;
+    width: 65%;
   }
 }
