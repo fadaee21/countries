@@ -13,7 +13,7 @@ export const Error = () => {
             <div className="img404"></div>
             <h2>404_</h2>
             <h4>YOU'RE BEYOND THE BORDERS</h4>
-            <button className='btn btn-light btn-error' onClick={()=>navigate("/")} >back to hom</button>
+            <button className='btn btn-light btn-error' onClick={()=>navigate("/")} >back to home</button>
         </div>
     )
 }
