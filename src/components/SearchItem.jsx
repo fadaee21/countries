@@ -16,9 +16,12 @@ export const SearchItem = ({ handleRegionName, handleCountryName }) => {
                     onChange={handleCountryName}
                 />
             </div>
-            <label for="option-region">
-                <select name='option-region' aria-label='option-region'
-                    className='option-region' onChange={handleRegionName}  >
+            <label htmlFor="option-region">
+                <select name='option-region'
+                    aria-label='option-region'
+                    className='option-region'
+                    id='option-region'
+                    onChange={handleRegionName}  >
                     <option hidden  >Filter By Region</option>
                     <option hidden  >All Region</option>
                     <option value="Americas">America</option>
