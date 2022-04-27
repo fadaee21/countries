@@ -16,7 +16,7 @@ export const SearchItem = ({ handleRegionName, handleCountryName }) => {
                     onChange={handleCountryName}
                 />
             </div>
-            <label htmlFor="option-region">
+
                 <select name='option-region'
                     aria-label='option-region'
                     className='option-region'
@@ -30,7 +30,7 @@ export const SearchItem = ({ handleRegionName, handleCountryName }) => {
                     <option value="Asia">Asia</option>
                     <option value="Europe">Europe</option>
                 </select>
-            </label>
+
         </div>
     )
 }
