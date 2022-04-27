@@ -16,14 +16,18 @@ export const SearchItem = ({ handleRegionName, handleCountryName }) => {
                     onChange={handleCountryName}
                 />
             </div>
-            <select name='region' className='option-region' onChange={handleRegionName}  >
-                <option hidden  >Filter by region</option>
-                <option value="Americas">America</option>
-                <option value="Africa">Africa</option>
-                <option value="Oceania">Oceania</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-            </select>
+            <label for="option-region">
+                <select name='option-region' aria-label='option-region'
+                    className='option-region' onChange={handleRegionName}  >
+                    <option hidden  >Filter By Region</option>
+                    <option hidden  >All Region</option>
+                    <option value="Americas">America</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Oceania">Oceania</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                </select>
+            </label>
         </div>
     )
 }

@@ -26,6 +26,7 @@ export const CountryDetail = () => {
         setCountryDetail(data);
       } else {
         //it must re direct to not found page
+        navigate("/not-found")
         console.log(res.statusText);
       }
       setLoading(false)
